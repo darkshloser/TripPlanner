@@ -4,9 +4,10 @@ import "./App.css";
 import Message from "./components/ListGroup";
 import ListGroup from "./components/ListGroup";
 import Alert from "./components/Alert";
-import Button from "./components/Button";
+import Button from "./components/Button/Button";
 
 function App() {
+    const [alertVisible, setAlertVisibility] = useState(false);
     let items = ["New York", "San Francisco", "Tokyo", "London", "Paris"];
 
     const handleSelectItem = (item: string) => {
@@ -15,12 +16,14 @@ function App() {
 
     return (
         <div>
-            <Button color="primary" onClick={() => console.log("Clicked")}>
+            <Button color="primary" onClick={() => setAlertVisibility(true)}>
                 My Button
             </Button>
-            <Alert>
-                Hello <span>World</span>
-            </Alert>
+            {alertVisible && (
+                <Alert onClose={() => setAlertVisibility(false)}>
+                    Hello <span>World</span>
+                </Alert>
+            )}
             <ListGroup
                 items={items}
                 heading="Cities"
