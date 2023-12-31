@@ -9,6 +9,7 @@ import Like from "./components/Like";
 import NavBar from "./components/NavBar";
 import Cart from "./components/Cart";
 import Form from "./components/Form";
+import FormState from "./components/FormState";
 
 function App() {
     const [alertVisible, setAlertVisibility] = useState(false);
@@ -24,6 +25,8 @@ function App() {
             <NavBar cartItemsCount={cartItems.length} />
             <Cart cartItems={cartItems} onClear={() => setCartItems([])} />
             <Form />
+            <br />
+            <FormState />
             <Like />
             <Button color="primary" onClick={() => setAlertVisibility(true)}>
                 My Button
