@@ -1,12 +1,17 @@
 import React, { FormEvent } from "react";
 import { FieldValue, FieldValues, useForm } from "react-hook-form";
 
+interface FormData {
+    name: string;
+    age: number;
+}
+
 const FormReactHook = () => {
     const {
         register,
         handleSubmit,
         formState: { errors },
-    } = useForm();
+    } = useForm<FormData>();
 
     const onSubmit = (data: FieldValues) => console.log(data);
     return (
