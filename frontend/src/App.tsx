@@ -10,6 +10,7 @@ import NavBar from "./components/NavBar";
 import Cart from "./components/Cart";
 import Form from "./components/Form";
 import FormState from "./components/FormState";
+import FormReactHook from "./components/FormReactHook";
 
 function App() {
     const [alertVisible, setAlertVisibility] = useState(false);
@@ -27,6 +28,8 @@ function App() {
             <Form />
             <br />
             <FormState />
+            <br />
+            <FormReactHook />
             <Like />
             <Button color="primary" onClick={() => setAlertVisibility(true)}>
                 My Button
