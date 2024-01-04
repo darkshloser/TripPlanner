@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import reactLogo from "./assets/react.svg";
 import "./App.css";
 import Message from "./components/ListGroup";
@@ -17,6 +17,16 @@ import ExpenseForm from "./expense-tracker/components/ExpenseForm";
 import categories from "./expense-tracker/categories";
 
 function App() {
+    const ref = useRef<HTMLInputElement>(null);
+
+    useEffect(() => {
+        if (ref.current) ref.current.focus();
+    });
+
+    useEffect(() => {
+        document.title = "Trip planner";
+    });
+
     const [alertVisible, setAlertVisibility] = useState(false);
     const [cartItems, setCartItems] = useState(["Product1", "Product2"]);
     let items = ["New York", "San Francisco", "Tokyo", "London", "Paris"];
@@ -66,6 +76,7 @@ function App() {
                     setExpenses(expenses.filter((e) => e.id !== id))
                 }
             />
+            <input ref={ref} type="text" className="form-control" />
             <NavBar cartItemsCount={cartItems.length} />
             <Cart cartItems={cartItems} onClear={() => setCartItems([])} />
             <Form />
